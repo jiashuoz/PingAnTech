@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Compare{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="compare">
+    <label for="firstword">firstword</label>
+    <input name="firstword" id="firstword" required>
+    <label for="secondword">secondword</label>
+    <input type="secondword" name="secondword" id="secondword" required>
+    <input type="submit" value="Compare">
+  </form>
+
+  <h1> Similarity score is {{ score }}!</h1>
+{% endblock %}
