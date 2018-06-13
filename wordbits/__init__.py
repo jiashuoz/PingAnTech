@@ -7,8 +7,11 @@ Func  : provide a user interface for word2vec functions
 
 import os
 
-from flask import Flask
+from flask import Flask, render_template
+from gensim.models import Word2Vec
 
+global model
+model = Word2Vec.load('wordbits/word2vec/wiki.zh.text.model')
 
 def create_app(test_config=None):
     # create and configure the app
@@ -33,8 +36,9 @@ def create_app(test_config=None):
 
     # a smiple page that says hello
     @app.route('/hello')  # creates a connection between the URL /hello and a function
-    def hello():
-        return 'Hello, World!'
+    @app.route('/hello/<name>')
+    def hello(name=None):
+        return render_template('hello.html', name=name)
 
     # register the blueprint word_similarity
     from . import word_similarity
