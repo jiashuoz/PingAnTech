@@ -12,11 +12,13 @@ bp = Blueprint('word_similarity', __name__, url_prefix='/word_similarity')
 
 @bp.route('/compare', methods=['GET', 'POST'])
 def compare():
-    score = int(-1)
+    score = int(0)
+    firstword = None
+    secondword = None
     if request.method == 'POST':
         firstword = request.form['firstword']
         secondword = request.form['secondword']
-        error = None
+        error = "Please check the score:"
 
         if not firstword:
             error = 'first word is required.'
