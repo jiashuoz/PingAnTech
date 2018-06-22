@@ -1,8 +1,10 @@
-wordbits/word2vec
+wordbits/models
 wordbits/data
 
 facial_detector/pic
 facial_detector/predictor
+
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
