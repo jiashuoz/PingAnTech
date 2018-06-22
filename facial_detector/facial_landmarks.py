@@ -17,7 +17,7 @@ import cv2
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor
 detector = dlib.get_frontal_face_detector()
-predictor = dlib.shape_predictor('./predictor/shape_predictor_68_face_landmarks.dat')
+predictor = dlib.shape_predictor("../facial_detector/predictor/shape_predictor_68_face_landmarks.dat")
 
 cap = cv2.VideoCapture(0)
 
@@ -26,7 +26,7 @@ while True:
     ret, frame = cap.read()
 
     # convert the captured image to grayscale
-    frame = imutils.resize(frame, width=800)
+    frame = imutils.resize(frame, width=400)
     # Our operations on the frame come here
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -45,11 +45,11 @@ while True:
         # [i.e., (x, y, w, h)], then draw the face bounding box
         (x, y, w, h) = face_utils.rect_to_bb(rect)
 
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 1)
 
         # show the face number
         cv2.putText(frame, "Face #{}".format(i + 1), (x - 10, y - 10),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
 
         # loop over the (x, y)-coordinates for the facial landmarks
         # and draw them on the image
@@ -64,6 +64,7 @@ while True:
 # When everything done, release the capture
 cap.release()
 cv2.destroyAllWindows()
+
 
 
 
